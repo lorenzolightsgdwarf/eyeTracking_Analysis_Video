@@ -91,10 +91,9 @@ int main(int argc, char** argv) {
         cv::namedWindow("Reference image", CV_WINDOW_NORMAL);
     }
 
-
+    double currentTime = inputVideo.get(CV_CAP_PROP_POS_MSEC);
     while (inputVideo.read(frame)) {
         totframe++;
-        double currentTime = inputVideo.get(CV_CAP_PROP_POS_MSEC);
         bool is_processable = false;
         cv::Mat demoFrame = frame.clone();
         while (1) {
@@ -203,6 +202,7 @@ int main(int argc, char** argv) {
             cv::waitKey(0);
 
         }
+        currentTime = inputVideo.get(CV_CAP_PROP_POS_MSEC);
     }
 end:
     cout << "Done!\n";
