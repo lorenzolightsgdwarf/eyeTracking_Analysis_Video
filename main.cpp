@@ -137,7 +137,7 @@ int main(int argc, char** argv) {
                     dst.push_back(cv::Point2f(refTags[id](3, 0), refTags[id](3, 1)));
                 }
                 if (src.size() == 0) continue;
-                cv::Mat H = cv::findHomography(src, dst, CV_RANSAC);
+                cv::Mat H = cv::findHomography(src, dst, CV_LMEDS);
                 vector <std::string> fields;
                 boost::split(fields, line, boost::is_any_of(","));
                 cv::Mat frameGaze = (cv::Mat_<double>(3, 1) << boost::lexical_cast<double>(fields[FIX_X]),
